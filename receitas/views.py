@@ -1,12 +1,12 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .models import Receita
 
 def home(request):
     return render(request, 'receitas/home.html')
 
 def receita_detail(request, id):
+    receita = get_object_or_404(Receita, pk=id)
     context={
-        'receita_id' : id,
-        'receita_title' : f'Receita Detalhada {id}', 
-        'receita_description' : f'Esta é a descrição detalhada da receita com ID {id}'
+        'receita': receita,
     }
     return render(request, 'receitas/receita_detail.html', context)
