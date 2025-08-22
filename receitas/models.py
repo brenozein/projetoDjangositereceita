@@ -6,7 +6,7 @@ class Receita(models.Model):
     ingredients = models.TextField()
     instructions = models.TextField()
     # Campo para a imagem de receita
-    imgage =models.ImageField(upload_to='receitas/images/', blank=True, null=True)
+    image =models.ImageField(upload_to='receitas/images/', blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
