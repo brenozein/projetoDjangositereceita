@@ -2,7 +2,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import Receita
 
 def home(request):
-    return render(request, 'receitas/home.html')
+    receitas=Receita.objects.all()
+    return render(request, 'receitas/home.html', {'receitas':receitas})
 
 def receita_detail(request, id):
     receita = get_object_or_404(Receita, pk=id)
@@ -13,7 +14,7 @@ def receita_detail(request, id):
 
 def pesquisar_receitas(request):
     query = request.GET.get('q')
-    resultado=[]
+    resultados=[]
 
     if query:
         resultados = Receita.objects.filter(title__icontains=query)
